@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Aki 💜</title>
+
+  
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:music {
+  @import:our-song.mp3
+}
+
+
+
+:photo {
+  @import:aki2.jpg
+  @import:content://com.android.externalstorage.documents/tree/primary%3ADownload%2FBluetooth::primary:Download/Bluetooth/aki1.jpg
+}
+  
+:root {
+  --purple: #bd8aff;
+  --pink: #ffb8e8;
+  --dark: #10071f;
+  --glass: rgba(255,255,255,.09);
+}
+
+body {
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  color: white;
+  background:
+    radial-gradient(ellipse at top, #49216e 0%, transparent 55%),
+    linear-gradient(145deg, #10071f, #210b37, #090510);
+  overflow-x: hidden;
+}
+
+button, input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#stars, #hearts {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.h2 {
+  position: center;
+}
+.star {
+  position: absolute;
+  color: #f3d9ff;
+  animation: twinkle 2s infinite alternate;
+}
+
+.heart {
+  position: absolute;
+  bottom: -50px;
+  color: #e5aaff;
+  animation: floatUp linear forwards;
+  opacity: .7;
+}
+
+@keyframes twinkle {
+  from { opacity: .2; transform: scale(.8); }
+  to { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-115vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(22px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.12); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(92%, 520px);
+  margin: auto;
+  padding: 35px 0 45px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  text-align: center;
+  animation: appear .8s ease both;
+}
+
+.screen.active {
+  display: block;
+}
+
+.eyebrow {
+  color: #e0b5ff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font: 11px Arial, sans-serif;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(34px, 9vw, 52px);
+  line-height: 1.15;
+  margin-bottom: 15px;
+  text-shadow: 0 0 25px #c17bff77;
+}
+
+h2 {
+  font-size: clamp(27px, 7vw, 36px);
+  margin-bottom: 18px;
+  color: #f3d8ff;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.9;
+  color: #f1e5fa;
+}
+
+.glass {
+  background: var(--glass);
+  border: 1px solid #ffffff25;
+  border-radius: 25px;
+  padding: 28px 23px;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 12px 45px #0003;
+}
+
+button.primary {
+  border: 1px solid #f0d4ff70;
+  color: #26103b;
+  background: linear-gradient(120deg, #e9caff, #ffcfed);
+  padding: 14px 24px;
+  border-radius: 40px;
+  font-weight: bold;
+  box-shadow: 0 0 25px #c88aff35;
+  transition: transform .2s, box-shadow .2s;
+}
+
+button.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 35px #c88aff80;
+}
+
+button.secondary {
+  border: 1px solid #dcb8ff70;
+  color: white;
+  background: #ffffff0b;
+  padding: 13px 21px;
+  border-radius: 40px;
+}
+
+input {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #d9adff70;
+  border-radius: 15px;
+  outline: none;
+  background: #130921;
+  color: white;
+  text-align: center;
+  margin: 20px 0 12px;
+}
+
+input:focus {
+  border-color: #e6c1ff;
+  box-shadow: 0 0 18px #c28aff40;
+}
+
+#hint {
+  font: 13px Arial, sans-serif;
+  color: #ffcae9;
+  margin-top: 12px;
+  min-height: 18px;
+}
+
+.hero-icon {
+  display: block;
+  font-size: 55px;
+  margin-bottom: 15px;
+  animation: pulse 2s infinite;
+}
+
+.photo-frame {
+  width: 220px;
+  height: 190px;
+  margin: 0 auto 24px;
+  padding: 6px;
+  border-radius: 24px 24px 24px 24px;
+  border: 0px solid #edc7ff;
+  background: linear-gradient(10deg, #e7b9ff, #7f40b5, #ffb8e8);
+  box-shadow: 0 0 32px #ca8aff40;
+  overflow: hidden;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: inherit;
+}
+
+.photo-note {
+  font: 12px Arial, sans-serif;
+  color: #d9bce9;
+  margin-top: -12px;
+  margin-bottom: 18px;
+}
+
+.letter {
+  text-align: left;
+  white-space: pre-line;
+}
+
+.letter p {
+  margin-bottom: 14px;
+}
+
+.progress {
+  width: 100%;
+  height: 4px;
+  background: #ffffff18;
+  border-radius: 10px;
+  margin: 23px 0 10px;
+  overflow: hidden;
+}
+
+#bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #bb83ff, #ffb9e8);
+  transition: width .4s ease;
+}
+
+.page-label {
+  font: 11px Arial, sans-serif;
+  color: #d4b6e8;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.bouquet {
+  font-size: clamp(85px, 23vw, 125px);
+  margin: 18px 0;
+  display: inline-block;
+  filter: drop-shadow(0 0 22px #e5aaff65);
+  animation: sway 3s ease-in-out infinite;
+}
+
+.tiny {
+  font: 12px Arial, sans-serif;
+  color: #d3b6e5;
+  margin-top: 20px;
+}
+
+#musicBtn {
+  position: fixed;
+  z-index: 5;
+  top: 15px;
+  right: 15px;
+  border: 1px solid #e4c0ff55;
+  border-radius: 30px;
+  padding: 10px 14px;
+  background: #28133bd9;
+  color: white;
+  font: 12px Arial, sans-serif;
+}
+
+#answer {
+  margin-top: 18px;
+  min-height: 32px;
+  color: #ffd4f0;
+  line-height: 1.7;
+}
+
+@media(max-width: 380px) {
+  .glass { padding: 24px 17px; }
+  p { font-size: 16px; }
+  .photo-frame { width: 155px; height: 170px; }
+}
+
+
+
+  
+/* ===== AKI'S SPECIAL YES CELEBRATION ===== */
+
+#yesCelebration {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at center, #57217c 0%, #1b092e 65%, #090311 100%);
+  text-align: center;
+}
+
+#yesCelebration.show {
+  display: flex;
+  animation: celebrationFade .8s ease;
+}
+
+#fireworksCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.celebration-content {
+  position: relative;
+  z-index: 2;
+  max-width: 450px;
+  animation: celebrationRise 1s ease both;
+}
+
+.celebration-content h1 {
+  font-size: clamp(42px, 12vw, 68px);
+  color: #ffe0fa;
+  text-shadow:
+    0 0 12px #ff8ce8,
+    0 0 35px #bd69ff,
+    0 0 65px #bd69ff;
+  animation: yesGlow 1.5s infinite alternate;
+}
+
+.celebration-content p {
+  margin: 14px 0;
+}
+
+.celebration-bouquet {
+  font-size: clamp(85px, 22vw, 125px);
+  animation: bouquetPop 1.4s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 25px #ff9de8);
+}
+
+.celebration-tag {
+  color: #f6caff;
+  letter-spacing: 5px;
+  font: bold 11px Arial, sans-serif;
+  margin-bottom: 20px;
+}
+
+.celebration-message {
+  border: 1px solid #e8b9ff65;
+  border-radius: 24px;
+  padding: 23px 18px;
+  background: #ffffff10;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 35px #be72ff25;
+}
+
+#celebrationContinue {
+  margin-top: 18px;
+}
+
+@keyframes celebrationFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes celebrationRise {
+  from { opacity: 0; transform: translateY(35px) scale(.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes yesGlow {
+  from { transform: scale(1); }
+  to { transform: scale(1.045); }
+}
+
+@keyframes bouquetPop {
+  from { transform: translateY(4px) rotate(-5deg); }
+  to { transform: translateY(-9px) rotate(5deg); }
+}
+
+.celebration-sparkle {
+  position: absolute;
+  top: -30px;
+  pointer-events: none;
+  animation: sparkleFall linear forwards;
+}
+
+@keyframes sparkleFall {
+  to {
+    transform: translateY(115vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .celebration-content h1,
+  .celebration-bouquet {
+    animation: none;
+  }
+}
+
+  
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+<div id="hearts"></div>
+  
+<!-- SPECIAL YES CELEBRATION -->
+<div id="yesCelebration" aria-live="polite">
+  <canvas id="fireworksCanvas"></canvas>
+
+  <div class="celebration-content">
+    <div class="celebration-tag">
+      A NEW LITTLE CHAPTER BEGINS
+    </div>
+
+    <div class="celebration-bouquet">💐</div>
+
+    <h1>SHE SAID YES!</h1>
+
+    <div class="celebration-message">
+      <h2>AKI × AKI 💜</h2>
+
+      <p>
+        Wehhh..., Totoo?! 🥹💗
+      </p>
+
+      <p>
+        Thank you for giving me this chance, Aki.
+        Today, this little website becomes a memory
+        that I'll always treasure.
+      </p>
+
+      <p>
+        No rushing, no pressure — just two people
+        getting to know each other, one beautiful
+        moment at a time. 🌷
+      </p>
+
+      <p style="color:#ffd2f2">
+        Our little story starts here. ✨
+      </p>
+    </div>
+
+    <button
+      id="celebrationContinue"
+      class="primary"
+      onclick="finishCelebration()">
+      Keep this memory forever 💌
+    </button>
+  </div>
+</div>
+
+
+<button id="musicBtn" onclick="toggleMusic()">
+  ♫ Music: OFF
+</button>
+
+<!-- Add your own music file named our-song.mp3 -->
+<audio id="music" loop preload="auto">
+  <source src="our-song.mp3" type="audio/mpeg">
+</audio>
+
+<main>
+
+  <!-- PAGE 1: PASSWORD -->
+  <section class="screen active" id="lock">
+    <div class="glass">
+      <span class="hero-icon">💜</span>
+      <div class="eyebrow">A little secret awaits</div>
+      <h1>For Aki</h1>
+      <p>
+        Somewhere in this little universe,<br>
+        a letter is waiting just for you.
+      </p>
+
+      <input
+        id="password"
+        type="password"
+        placeholder="Enter our secret password"
+        autocomplete="off"
+      >
+
+      <button class="primary" onclick="unlock()">
+        Unlock My Letter ✨
+      </button>
+
+      <div id="hint"></div>
+      <div class="tiny">Made with care, from Aki to Aki 💌</div>
+    </div>
+  </section>
+
+  <!-- PAGE 2: INTRODUCTION -->
+  <section class="screen" id="intro">
+    <div class="photo-frame">
+      <!-- Replace aki1.jpg with her photo filename -->
+      <img src="aki1.jpg" alt="A special picture of Aki"
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="photo-note">A little corner of my world ✨</div>
+    <div class="eyebrow">A letter written just for you</div>
+    <h1>Hi, Aki. 💜</h1>
+
+    <div class="glass">
+      <p>
+        Before you continue, I want you to know that
+        this little website is not just a collection
+        of words.
+      </p>
+      <p style="margin-top:14px">
+        It's my small way of telling you something
+        I've wanted to express from the heart.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="primary" onclick="showPage(2)">
+        Read My Letter 💌
+      </button>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="screen" id="page1">
+    <div class="eyebrow">Chapter 01 · The beginning</div>
+    <div class="page-label">A LITTLE THOUGHT</div>
+
+    <div class="glass letter">
+      <h2>There's something about you...</h2>
+      <p>
+        Aki, I don't know if I can find the perfect
+        words to explain everything I feel, but I
+        want to try.
+      </p>
+      <p>
+        Somewhere between our conversations, the
+        little moments we share, and the times you
+        make me smile, you became someone special
+        to me.
+      </p>
+      <p>
+        It's not about finding someone perfect.
+        It's about finding someone whose presence
+        makes ordinary moments feel meaningful.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" onclick="showPage(1)">← Back</button>
+      <button class="primary" onclick="showPage(3)">Continue 💜</button>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="screen" id="page2">
+    <div class="eyebrow">Chapter 02 · What I appreciate</div>
+    <div class="page-label">THE LITTLE THINGS</div>
+
+    <div class="glass letter">
+      <h2>It's the little things. 🌷</h2>
+      <p>
+        I appreciate the little things about you:
+        your presence, our conversations, and the
+        moments when we get to share a part of our
+        day with each other.
+      </p>
+      <p>
+        I want to know more about you — your dreams,
+        your favorite things, the things that make
+        you happy, and even the things you find
+        difficult to talk about.
+      </p>
+      <p>
+        I don't expect every day to be perfect.
+        I simply want to keep learning how to
+        understand and appreciate you better.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" onclick="showPage(2)">← Back</button>
+      <button class="primary" onclick="showPage(4)">Continue ✨</button>
+    </div>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="screen" id="page3">
+    <div class="eyebrow">Chapter 03 · My intentions</div>
+    <div class="page-label">A SINCERE PROMISE</div>
+
+    <div class="glass letter">
+      <h2>I want to make an effort. 💜</h2>
+      <p>
+        I know that feelings aren't proven by words
+        alone. They are shown through actions,
+        patience, honesty, and respect.
+      </p>
+      <p>
+        I want to make an effort to understand you,
+        listen to you, support your goals, and
+        celebrate your achievements.
+      </p>
+      <p>
+        I want us to be able to communicate honestly,
+        respect each other's boundaries, and enjoy
+        getting to know each other without pressure.
+      </p>
+      <p>
+        I can't promise that I'll always know
+        exactly what to do, but I can promise to
+        keep learning and to be sincere with you.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" onclick="showPage(3)">← Back</button>
+      <button class="primary" onclick="showPage(5)">One More Thing 💌</button>
+    </div>
+  </section>
+
+  <!-- PAGE 6 -->
+  <section class="screen" id="page4">
+    <div class="eyebrow">Chapter 04 · From my heart</div>
+
+    <div class="glass letter">
+      <h2>So, here's the truth...</h2>
+      <p>
+        I made this little website because I wanted
+        to do something different — something you
+        could read at your own pace and remember.
+      </p>
+      <p>
+        My name is Aki, and your name is Aki too.
+        Maybe that's another little detail that
+        makes our story feel uniquely ours.
+      </p>
+      <p>
+        But there's one question I still want to ask
+        you, and I want to ask it sincerely.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" onclick="showPage(4)">← Back</button>
+      <button class="primary" onclick="showPage(6)">Open the Surprise 🎁</button>
+    </div>
+  </section>
+
+  <!-- PAGE 7: FLOWERS -->
+  <section class="screen" id="flowers">
+    <div class="eyebrow">A little gift for you</div>
+        <div class="photo-frame">
+      <!-- Replace aki2.jpg with another photo of her -->
+      <img src="aki2.jpg" alt="Another special memory"
+           onerror="this.style.display='none'">
+    </div>
+
+    <div class="photo-note">A memory worth keeping 🌙</div>
+    <h1>These are for you. 🌸</h1>
+
+    <div class="glass">
+      <div class="bouquet" aria-label="Bouquet of flowers">
+        💐
+      </div>
+
+      <p>
+        If I could send this letter with a bouquet,
+        I would choose flowers that remind me of
+        something gentle, beautiful, and full of
+        possibility.
+      </p>
+
+      <p style="margin-top:15px">
+        So here's a virtual bouquet for you, Aki —
+        a small gift to accompany these words.
+      </p>
+    </div>
+
+    <div class="nav">
+      <button class="secondary" onclick="showPage(5)">← Back</button>
+      <button class="primary" onclick="showPage(7)">
+        There's a Question... 💜
+      </button>
+    </div>
+  </section>
+
+  <!-- PAGE 8: THE PROPOSAL -->
+  <section class="screen" id="proposal">
+    <div class="eyebrow">The question I've been waiting to ask</div>
+
+    <div class="glass">
+      <span class="hero-icon">💗</span>
+      <h1>Aki...</h1>
+
+      <p>
+        I've shared what's in my heart, and now
+        I want to ask you something important.
+      </p>
+
+      <h2 style="margin-top:25px">
+        Will you let me court you?
+      </h2>
+
+      <p>
+        I'd love the chance to know you more deeply,
+        show you my sincerity through my actions,
+        and see where this journey takes us —
+        at a pace that feels right for both of us.
+      </p>
+
+      <div class="nav">
+        <button class="primary" onclick="answerYes()">
+          Yes, you may 💜
+        </button>
+
+        <button class="secondary" onclick="answerThink()">
+          Let me think 🌷
+        </button>
+      </div>
+
+      <div id="answer"></div>
+    </div>
+  </section>
+
+  <!-- PAGE 9: CLOSING -->
+  <section class="screen" id="ending">
+    <div class="glass">
+      <span class="hero-icon">💐</span>
+      <div class="eyebrow">One last message</div>
+      <h1>Thank you, Aki.</h1>
+
+      <p id="endingText">
+        Thank you for taking the time to read
+        my little letter.
+      </p>
+
+      <p style="margin-top:18px">
+        Whatever your answer, I appreciate your
+        honesty and the chance to express myself.
+      </p>
+
+      <p style="margin-top:24px;color:#e8c3ff">
+        From Aki, with sincerity. 💜
+      </p>
+
+      <button class="secondary" style="margin-top:25px"
+              onclick="showPage(0)">
+        ↻ Read Again
+      </button>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/*
+  PERSONALIZE THESE SETTINGS:
+  Password: aki143
+  Photos: aki1.jpg and aki2.jpg
+  Music: our-song.mp3
+
+  Put all three media files in the same folder
+  as this HTML file.
+*/
+
+const SECRET_PASSWORD = "aki";
+
+const music = document.getElementById("music");
+const musicBtn = document.getElementById("musicBtn");
+
+let currentPage = 0;
+
+function showPage(number) {
+  const pages = document.querySelectorAll(".screen");
+
+  if (number < 0 || number >= pages.length) return;
+
+  pages.forEach(page => page.classList.remove("active"));
+  pages[number].classList.add("active");
+
+  currentPage = number;
+  window.scrollTo({ top: 0, behavior: "smooth" });
+
+  const bar = document.getElementById("bar");
+  if (bar) {
+    bar.style.width =
+      (number / Math.max(1, pages.length - 1) * 100) + "%";
+  }
+}
+
+function unlock() {
+  const entered =
+    document.getElementById("password").value;
+
+  if (entered !== SECRET_PASSWORD) {
+    document.getElementById("hint").textContent =
+      "That's not the password. Try again, Aki 💜";
+    return;
+  }
+
+  document.getElementById("hint").textContent = "";
+
+  showPage(1);
+
+  // Browsers generally allow music after a user taps a button.
+  music.play().then(() => {
+    musicBtn.textContent = "♫ Music: ON";
+  }).catch(() => {
+    musicBtn.textContent = "♫ Tap for music";
+  });
+}
+
+async function toggleMusic() {
+  if (music.paused) {
+    try {
+      await music.play();
+      musicBtn.textContent = "♫ Music: ON";
+    } catch (error) {
+      musicBtn.textContent = "♫ Music unavailable";
+    }
+  } else {
+    music.pause();
+    musicBtn.textContent = "♫ Music: OFF";
+  }
+}
+
+
+function answerYes() {
+  document.getElementById("endingText").textContent =
+    "Aki, thank you for giving me the chance to court you. " +
+    "I'll do my best to show my sincerity through my actions, " +
+    "respect your boundaries, and make this journey meaningful " +
+    "for both of us. Let's take our time and enjoy getting to " +
+    "know each other. 💜";
+
+  // Prepare the final page behind the celebration.
+  showPage(8);
+
+  // Launch the special fireworks and flower celebration.
+  startCelebration();
+}
+
+
+// Create twinkling stars.
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 65; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = Math.random() > .5 ? "✦" : "·";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (Math.random() * 12 + 5) + "px";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  stars.appendChild(star);
+}
+
+// Continuously floating hearts.
+const hearts = document.getElementById("hearts");
+
+function createHeart() {
+  const heart = document.createElement("span");
+  heart.className = "heart";
+  heart.textContent =
+    ["♡", "♥", "💜", "✧", "💕"][Math.floor(Math.random() * 5)];
+
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (Math.random() * 18 + 12) + "px";
+  heart.style.animationDuration = (Math.random() * 6 + 7) + "s";
+
+  hearts.appendChild(heart);
+  setTimeout(() => heart.remove(), 14000);
+}
+
+setInterval(createHeart, 650);
+
+function burstHearts() {
+  for (let i = 0; i < 25; i++) {
+    setTimeout(createHeart, i * 80);
+  }
+}
+
+// Let Enter submit the password.
+document.getElementById("password").addEventListener(
+  "keydown",
+  event => {
+    if (event.key === "Enter") unlock();
+  }
+);
+
+
+  
+/* ===== FIREWORKS CELEBRATION ENGINE ===== */
+
+let fireworkAnimation = null;
+let fireworkInterval = null;
+let celebrationActive = false;
+let particles = [];
+
+function launchFirework() {
+  if (!celebrationActive) return;
+
+  const canvas = document.getElementById("fireworksCanvas");
+  const ctx = canvas.getContext("2d");
+
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height * 0.65;
+  const colors = [
+    "#ff9de2",
+    "#d9a4ff",
+    "#ffffff",
+    "#c8a1ff",
+    "#ffd5f5",
+    "#f6c6ff"
+  ];
+
+  const color = colors[
+    Math.floor(Math.random() * colors.length)
+  ];
+
+  // Each burst creates a ring of glowing particles.
+  for (let i = 0; i < 75; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 4.5 + 1.2;
+
+    particles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 1,
+      decay: Math.random() * 0.014 + 0.009,
+      size: Math.random() * 3 + 1,
+      color
+    });
+  }
+}
+
+function animateFireworks() {
+  if (!celebrationActive) return;
+
+  const canvas = document.getElementById("fireworksCanvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles = particles.filter(p => p.life > 0);
+
+  for (const p of particles) {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.035;
+    p.vx *= 0.99;
+    p.vy *= 0.99;
+    p.life -= p.decay;
+
+    ctx.globalAlpha = Math.max(0, p.life);
+    ctx.fillStyle = p.color;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = p.color;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.globalAlpha = 1;
+  ctx.shadowBlur = 0;
+
+  fireworkAnimation = requestAnimationFrame(
+    animateFireworks
+  );
+}
+
+function resizeFireworks() {
+  const canvas = document.getElementById("fireworksCanvas");
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+function startCelebration() {
+  const overlay = document.getElementById("yesCelebration");
+
+  overlay.classList.add("show");
+  overlay.setAttribute("aria-label", "Aki said yes celebration");
+
+  celebrationActive = true;
+  particles = [];
+
+  resizeFireworks();
+
+  // Multiple fireworks launch across the screen.
+  launchFirework();
+  setTimeout(launchFirework, 250);
+  setTimeout(launchFirework, 500);
+  setTimeout(launchFirework, 750);
+
+  fireworkInterval = setInterval(() => {
+    if (celebrationActive) launchFirework();
+  }, 650);
+
+  animateFireworks();
+
+  // Add a shower of falling sparkles.
+  for (let i = 0; i < 55; i++) {
+    setTimeout(() => {
+      if (!celebrationActive) return;
+
+      const sparkle = document.createElement("span");
+      sparkle.className = "celebration-sparkle";
+
+      sparkle.textContent = [
+        "💜", "✨", "💕", "🌸", "💖", "✦"
+      ][Math.floor(Math.random() * 6)];
+
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.fontSize =
+        (Math.random() * 18 + 12) + "px";
+
+      sparkle.style.animationDuration =
+        (Math.random() * 3 + 3) + "s";
+
+      overlay.appendChild(sparkle);
+
+      setTimeout(() => sparkle.remove(), 6500);
+    }, i * 100);
+  }
+
+  // Continue the background music if the browser permits it.
+  const music = document.getElementById("music");
+
+  if (music.paused) {
+    music.play().catch(() => {
+      // Music can still be started using its music button.
+    });
+  }
+}
+
+function stopCelebration() {
+  celebrationActive = false;
+
+  if (fireworkAnimation !== null) {
+    cancelAnimationFrame(fireworkAnimation);
+    fireworkAnimation = null;
+  }
+
+  if (fireworkInterval !== null) {
+    clearInterval(fireworkInterval);
+    fireworkInterval = null;
+  }
+
+  particles = [];
+}
+
+function finishCelebration() {
+  stopCelebration();
+
+  document.getElementById("yesCelebration")
+    .classList.remove("show");
+
+  document.getElementById("yesCelebration")
+    .querySelectorAll(".celebration-sparkle")
+    .forEach(el => el.remove());
+
+  // Reveal your original final letter.
+  showPage(8);
+}
+
+window.addEventListener("resize", () => {
+  if (celebrationActive) resizeFireworks();
+});
+
+</script>
+
+</body>
+</html>
