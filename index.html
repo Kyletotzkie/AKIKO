@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Aki 💜</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   
 <style>
 * {
@@ -18,11 +19,17 @@
   @import:our-song.mp3
 }
 
-
-
 :photo {
   @import:aki2.jpg
-  @import:content://com.android.externalstorage.documents/tree/primary%3ADownload%2FBluetooth::primary:Download/Bluetooth/aki1.jpg
+  @import:aki1.jpg
+  @import:aki3.jpg
+  @import:aki4.jpg
+  @import:aki5.jpg
+  @import:aki6.jpg
+  @import:aki7.jpg
+  @import:aki8.jpg
+  @import:aki9.jpg
+  @import:bouquet.png
 }
   
 :root {
@@ -282,8 +289,11 @@ input:focus {
 }
 
 .bouquet {
-  font-size: clamp(85px, 23vw, 125px);
-  margin: 18px 0;
+  position: relative;
+  bottom: 1px;
+  width: 100px;
+  font-size: clamp(75px, 23vw, 125px);
+  margin: 5px;
   display: inline-block;
   filter: drop-shadow(0 0 22px #e5aaff65);
   animation: sway 3s ease-in-out infinite;
@@ -300,10 +310,10 @@ input:focus {
   z-index: 5;
   top: 15px;
   right: 15px;
-  border: 1px solid #e4c0ff55;
-  border-radius: 30px;
+  border: 5px solid #c60effa0;
+  border-radius: 20px;
   padding: 10px 14px;
-  background: #28133bd9;
+  background: #00000000;
   color: white;
   font: 12px Arial, sans-serif;
 }
@@ -441,6 +451,277 @@ input:focus {
   }
 }
 
+
+/* ===== GENTLE NO RESPONSE ===== */
+
+#noCelebration {
+  position: fixed;
+  inset: 0;
+  z-index: 25;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at top, #613b83, transparent 65%),
+    linear-gradient(145deg, #160b25, #28133d, #10071f);
+  text-align: center;
+}
+
+#noCelebration.show {
+  display: flex;
+  animation: celebrationFade .8s ease;
+}
+
+.no-content {
+  width: 100%;
+  max-width: 440px;
+  animation: celebrationRise 1s ease;
+  height: 100%;
+}
+
+.no-flower {
+  font-size: 70px;
+  margin-bottom: 10px;
+  animation: bouquetPop 2s infinite alternate;
+  filter: drop-shadow(0 0 20px #f4c4ff);
+}
+
+.no-label {
+  font: 7px Arial, sans-serif;
+  letter-spacing: 2px;
+  color: #e7c8ff;
+  margin-bottom: 5px;
+}
+
+.no-content h1 {
+  color: #f0d5ff;
+  text-shadow: 0 0 25px #c58aff;
+}
+
+.no-message {
+  padding: 25px 20px;
+  border: 1px solid #e4c5ff50;
+  border-radius: 24px;
+  background: #ffffff0c;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 35px #b785ff20;
+  margin: 20px 0;
+}
+
+.no-message p {
+  margin-bottom: 17px;
+}
+
+.no-message h2 {
+  margin-top: 24px;
+}
+
+.no-signature {
+  color: #e8c5ff;
+  margin-top: 20px;
+}
+
+#noCelebration .primary {
+  margin-bottom: 20px;
+}
+
+
+/* ===== LET ME THINK SCREEN ===== */
+
+#thinkCelebration {
+  position: fixed;
+  inset: 0;
+  z-index: 26;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  overflow-y: auto;
+  background:
+    radial-gradient(ellipse at top, #69418d, transparent 65%),
+    linear-gradient(145deg, #160b25, #29153e, #10071f);
+  text-align: center;
+}
+
+#thinkCelebration.show {
+  display: flex;
+  animation: celebrationFade .8s ease;
+}
+
+.think-content {
+  width: 100%;
+  max-width: 440px;
+  animation: celebrationRise 1s ease;
+}
+
+.think-flower {
+  font-size: 85px;
+  margin-bottom: 15px;
+  animation: bouquetPop 2s infinite alternate;
+  filter: drop-shadow(0 0 20px #d9b0ff);
+}
+
+.think-label {
+  font: 11px Arial, sans-serif;
+  letter-spacing: 4px;
+  color: #e7c8ff;
+  margin-bottom: 20px;
+}
+
+.think-content h1 {
+  color: #f0d5ff;
+  text-shadow: 0 0 25px #c58aff;
+}
+
+.think-message {
+  padding: 25px 20px;
+  border: 1px solid #e4c5ff50;
+  border-radius: 24px;
+  background: #ffffff0c;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 35px #b785ff20;
+  margin: 20px 0;
+}
+
+.think-message p {
+  margin-bottom: 17px;
+}
+
+.think-message h2 {
+  margin-top: 24px;
+}
+
+.think-signature {
+  color: #e8c5ff;
+  margin-top: 20px;
+}
+
+
+  
+/* ===== AKI PHOTO GALLERY ===== */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 22px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 19px;
+  border: 1px solid #dcb5ff60;
+  background: #ffffff10;
+  box-shadow: 0 8px 25px #0004;
+  cursor: pointer;
+  transition: .3s ease;
+}
+
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px #c58aff70;
+}
+
+.gallery-card:active {
+  transform: scale(.96);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-caption {
+  padding: 12px 8px;
+  background: linear-gradient(135deg, #42215f, #251136);
+}
+
+.gallery-caption h3 {
+  font-size: 14px;
+  color: #f2d9ff;
+  margin-bottom: 6px;
+}
+
+.gallery-caption span {
+  font: 10px Arial, sans-serif;
+  color: #d7b8eb;
+}
+
+#galleryLetter {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #090311eF;
+  backdrop-filter: blur(12px);
+}
+
+#galleryLetter.show {
+  display: flex;
+  animation: celebrationFade .4s ease;
+}
+
+.gallery-letter-box {
+  width: 100%;
+  max-width: 430px;
+  max-height: 85vh;
+  overflow-y: auto;
+  padding: 30px 23px;
+  border: 1px solid #dcb5ff80;
+  border-radius: 26px;
+  background:
+    radial-gradient(ellipse at top, #583278, transparent 80%),
+    #1c0d2b;
+  box-shadow: 0 0 45px #bd83ff40;
+  animation: celebrationRise .5s ease;
+}
+
+.letter-decoration {
+  font-size: 48px;
+  margin-bottom: 15px;
+  animation: bouquetPop 2s infinite alternate;
+}
+
+.gallery-letter-box h2 {
+  color: #f0d1ff;
+}
+
+.gallery-letter-box p {
+  margin: 18px 0;
+  text-align: center;
+  line-height: 1.9;
+}
+
+.gallery-letter-sign {
+  margin: 25px 0;
+  color: #e8c3ff;
+  line-height: 1.8;
+  font-style: italic;
+}
+
+@media(max-width:350px) {
+  .gallery-card img {
+    height: 150px;
+  }
+
+  .gallery-grid {
+    gap: 10px;
+  }
+}
+
   
 </style>
 </head>
@@ -459,46 +740,139 @@ input:focus {
       A NEW LITTLE CHAPTER BEGINS
     </div>
 
-    <div class="celebration-bouquet">💐</div>
+    <div class="celebration-bouquet"> <img src="bouquet.png" class="bouquet"></div>
 
     <h1>SHE SAID YES!</h1>
 
     <div class="celebration-message">
       <h2>AKI × AKI 💜</h2>
 
-      <p>
-        Wehhh..., Totoo?! 🥹💗
+      <p style="font-size: 24px;">
+        Wehhh..., Totoo?! 🥹💜
       </p>
 
       <p>
         Thank you for giving me this chance, Aki.
-        Today, this little website becomes a memory
-        that I'll always treasure.
+        Of course as your suitor hindi ako mag eexpect na perfect na agad ang lahat, kahit na gaano katagal pa po ako maghintay basta po hindi mo pa sinasabi na tumigil na ako, hindi ako titigil, so sana qag ka magsabi ng ganon po.
       </p>
 
       <p>
-        No rushing, no pressure — just two people
-        getting to know each other, one beautiful
-        moment at a time. 🌷
+        Gusto ko rin na mas makilala mo rin ako para makapag desisyon ka ng maayos.
+      </p>
+      
+      <p>
+        No rushing, no pressure
       </p>
 
       <p style="color:#ffd2f2">
         Our little story starts here. ✨
       </p>
     </div>
-
-    <button
-      id="celebrationContinue"
-      class="primary"
-      onclick="finishCelebration()">
-      Keep this memory forever 💌
-    </button>
   </div>
 </div>
 
 
+  
+<!-- RESPECTFUL NO RESPONSE -->
+  
+<div id="noCelebration">
+  <div class="no-content">
+
+
+    <div class="no-label">A MESSAGE FROM MY HEART</div>
+
+    
+
+    <div class="no-message">
+      <h1>It's Okay, Aki. 💜</h1>
+      <p>
+        Thank you for being honest with me
+        and taking the time to read my letter.
+      </p>
+
+      <p>
+        I respect your feelings and your decision.
+        You don't have to feel bad about your answer.
+      </p>
+
+      <p>
+        I hope you never feel pressured by this.
+        Your happiness and comfort matter, too.
+      </p>
+
+      <p>
+        Thank you for being part of this little
+        moment. I'll always appreciate your honesty.
+      </p>
+
+      <h2>Stay happy, Aki. 🌸</h2>
+<div class="no-flower">🌷</div>
+      <p class="no-signature">
+        With sincerity,<br>
+        From Aki 💌
+      </p>
+    </div>
+
+    <button class="primary"
+      onclick="closeNoCelebration()">
+      Back to the letter 💜
+    </button>
+
+  </div>
+</div>
+
+  
+<!-- LET ME THINK SCREEN -->
+<div id="thinkCelebration">
+  <div class="think-content">
+
+    <div class="think-flower">🌷</div>
+
+    <div class="think-label">TAKE YOUR TIME</div>
+
+    <h1>Of Course, Aki. 💜</h1>
+
+    <div class="think-message">
+      <p>
+        It's completely okay if you need
+        more time to think about it.
+      </p>
+
+      <p>
+        I don't want you to feel rushed
+        or pressured to give me an answer.
+      </p>
+
+      <p>
+        Take all the time you need.
+        What matters to me is that your
+        decision comes from your heart.
+      </p>
+
+      <p>
+        Whatever your answer may be,
+        I'll respect it.
+      </p>
+
+      <h2>There's no rush. 🌸</h2>
+
+      <p class="think-signature">
+        From Aki, with sincerity. 💌
+      </p>
+    </div>
+
+    <button class="primary"
+      onclick="closeThinkCelebration()">
+      Back to my letter 💜
+    </button>
+
+  </div>
+</div>
+
+
+  
 <button id="musicBtn" onclick="toggleMusic()">
-  ♫ Music: OFF
+  🎵
 </button>
 
 <!-- Add your own music file named our-song.mp3 -->
@@ -512,11 +886,12 @@ input:focus {
   <section class="screen active" id="lock">
     <div class="glass">
       <span class="hero-icon">💜</span>
-      <div class="eyebrow">A little secret awaits</div>
       <h1>For Aki</h1>
       <p>
-        Somewhere in this little universe,<br>
-        a letter is waiting just for you.
+        CLUE: May formula
+        <p>
+          P = Favorite mong kulay + Our Nickname
+        </p>
       </p>
 
       <input
@@ -531,7 +906,7 @@ input:focus {
       </button>
 
       <div id="hint"></div>
-      <div class="tiny">Made with care, from Aki to Aki 💌</div>
+      <div class="tiny">Made just for you, from Aki to Aki 💌</div>
     </div>
   </section>
 
@@ -543,113 +918,191 @@ input:focus {
            onerror="this.style.display='none'">
     </div>
 
-    <div class="photo-note">A little corner of my world ✨</div>
-    <div class="eyebrow">A letter written just for you</div>
+    <div class="eyebrow">A website made just for you</div>
     <h1>Hi, Aki. 💜</h1>
 
     <div class="glass">
       <p>
-        Before you continue, I want you to know that
-        this little website is not just a collection
-        of words.
+        Wait, bago ang lahat, gusto ko muna sabihin sayo na this little website ay hindi parehas ng ibang letter.
       </p>
       <p style="margin-top:14px">
-        It's my small way of telling you something
+        It's my way of telling you something that
         I've wanted to express from the heart.
+      </p>
+      <p style="margin-top:14px">
+        Hindi sa hindi ko kayang sabihin sayo in person, gusto ko lang mag effort, at gumawa ng kakaiba para sayo.
       </p>
     </div>
 
-    <div class="nav">
-      <button class="primary" onclick="showPage(2)">
-        Read My Letter 💌
-      </button>
-    </div>
+    <button class="primary" onclick="showPage(2)"style="margin-top:24px">
+  Explore My Little Gallery 🌷
+</button>
   </section>
 
   <!-- PAGE 3 -->
   <section class="screen" id="page1">
-    <div class="eyebrow">Chapter 01 · The beginning</div>
+    <div class="eyebrow">Page 01 · The beginning</div>
     <div class="page-label">A LITTLE THOUGHT</div>
 
     <div class="glass letter">
-      <h2>There's something about you...</h2>
+      <h2>
+        Aki, Basahin mo ha:)</h2>
       <p>
-        Aki, I don't know if I can find the perfect
-        words to explain everything I feel, but I
-        want to try.
+        Aki, hindi ako sure kung mae-explain ko nang maayos ang lahat ng nararamdam ko, But of course, I want to try.
       </p>
       <p>
-        Somewhere between our conversations, the
-        little moments we share, and the times you
-        make me smile, you became someone special
-        to me.
+        Alam mo ba na kapag magkausap tayo, the little moments we share, and the times you make me smile, you became even more someone special to me.
       </p>
-      <p>
-        It's not about finding someone perfect.
-        It's about finding someone whose presence
-        makes ordinary moments feel meaningful.
-      </p>
+
     </div>
 
     <div class="nav">
       <button class="secondary" onclick="showPage(1)">← Back</button>
-      <button class="primary" onclick="showPage(3)">Continue 💜</button>
+      <button class="primary" onclick="showPage(3)">
+  Continue Reading 💌
+      </button>
     </div>
   </section>
 
-  <!-- PAGE 4 -->
-  <section class="screen" id="page2">
-    <div class="eyebrow">Chapter 02 · What I appreciate</div>
-    <div class="page-label">THE LITTLE THINGS</div>
+  
+<!-- AKI'S PHOTO GALLERY -->
+<section class="screen" id="gallery">
+  <div class="eyebrow">Page 02 • A collection of appreciation</div>
+  <h1>Aki's Little Gallery 💜</h1>
 
-    <div class="glass letter">
-      <h2>It's the little things. 🌷</h2>
-      <p>
-        I appreciate the little things about you:
-        your presence, our conversations, and the
-        moments when we get to share a part of our
-        day with each other.
-      </p>
-      <p>
-        I want to know more about you — your dreams,
-        your favorite things, the things that make
-        you happy, and even the things you find
-        difficult to talk about.
-      </p>
-      <p>
-        I don't expect every day to be perfect.
-        I simply want to keep learning how to
-        understand and appreciate you better.
-      </p>
+  <p style="margin-bottom:22px">
+    Every picture has a little letter.
+    Tap each one to discover what I see in you.
+  </p>
+
+  <div class="gallery-grid">
+
+<div class="gallery-card" onclick="openLetter(1)">
+      <img src="aki2.jpg" alt="Aki photo 2">
+      <div class="gallery-caption">
+        <h3>Your Smile ✨</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+</div>
+
+
+    <div class="gallery-card" onclick="openLetter(0)">
+      <img src="aki1.jpg" alt="Aki photo 1">
+      <div class="gallery-caption">
+        <h3>Your Laughter 🌷</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
     </div>
 
-    <div class="nav">
-      <button class="secondary" onclick="showPage(2)">← Back</button>
-      <button class="primary" onclick="showPage(4)">Continue ✨</button>
+
+    <div class="gallery-card" onclick="openLetter(2)">
+      <img src="aki3.jpg" alt="Aki photo 3">
+      <div class="gallery-caption">
+        <h3>Your Uniqueness 💜</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
     </div>
-  </section>
+
+    <div class="gallery-card" onclick="openLetter(3)">
+      <img src="aki4.jpg" alt="Aki photo 4">
+      <div class="gallery-caption">
+        <h3>My Appreciation 🌸</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+
+    <div class="gallery-card" onclick="openLetter(4)">
+      <img src="aki5.jpg" alt="Aki photo 5">
+      <div class="gallery-caption">
+        <h3>Your Kindness 🦋</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+
+    <div class="gallery-card" onclick="openLetter(5)">
+      <img src="aki6.jpg" alt="Aki photo 6">
+      <div class="gallery-caption">
+        <h3>Your Consideration 💗</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+
+    <div class="gallery-card" onclick="openLetter(5)">
+      <img src="aki7.jpg" alt="Aki photo 7">
+      <div class="gallery-caption">
+        <h3>Your Little Habits 🫶️</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+
+    <div class="gallery-card" onclick="openLetter(5)">
+      <img src="aki8.jpg" alt="Aki photo 8">
+      <div class="gallery-caption">
+        <h3>My Favorite Person 🤭</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+
+    <div class="gallery-card" onclick="openLetter(5)">
+      <img src="aki9.jpg" alt="Aki photo 9">
+      <div class="gallery-caption">
+        <h3>Simply You 🫶☺️🥰🤭</h3>
+        <span>Tap to open letter 💌</span>
+      </div>
+    </div>
+  </div>
+<button class="secondary" onclick="showPage(2)">← Back</button>
+  <button class="primary" onclick="showPage(4)"
+    style="margin-top:25px">
+    Continue Reading 💌
+  </button>
+
+</section>
+
+<!-- LETTER POPUP -->
+<div id="galleryLetter">
+  <div class="gallery-letter-box">
+
+    <div class="letter-decoration">💌</div>
+
+    <div class="eyebrow">A little letter for you</div>
+
+    <h2 id="galleryLetterTitle">Beautiful Soul</h2>
+
+    <p id="galleryLetterText"></p>
+
+    <div class="gallery-letter-sign">
+      With sincerity, <br>
+      From Aki 💜
+    </div>
+
+    <button class="primary"
+      onclick="closeLetter()">
+      Close My Letter 🌷
+    </button>
+
+  </div>
+</div>
+
+
 
   <!-- PAGE 5 -->
   <section class="screen" id="page3">
-    <div class="eyebrow">Chapter 03 · My intentions</div>
+    <div class="eyebrow">Page 03 · My intentions</div>
     <div class="page-label">A SINCERE PROMISE</div>
 
     <div class="glass letter">
-      <h2>I want to make an effort. 💜</h2>
+      <h2 style="text-align: center;">I want to make an effort. 💜</h2>
       <p>
-        I know that feelings aren't proven by words
-        alone. They are shown through actions,
-        patience, honesty, and respect.
+        I know na hindi kayang mapatunayan ng words lang na gusto talaga kita. Kailangan din ng action, patience, respect and honesty.
       </p>
       <p>
-        I want to make an effort to understand you,
-        listen to you, support your goals, and
-        celebrate your achievements.
+        Katulad ng sa introduction, gusto kong mag-effort at gawan ka ng kakaiba. I want to make an effort to understand you more, listen to you, support your goals, and
+        celebrate your achievements kahit na maliit na bagay lang.
       </p>
       <p>
-        I want us to be able to communicate honestly,
-        respect each other's boundaries, and enjoy
-        getting to know each other without pressure.
+        I hope maging totoo tayo sa isa't isa,
+        comfortable, respect each other's boundaries, and enjoy getting to know each other.
       </p>
       <p>
         I can't promise that I'll always know
@@ -666,19 +1119,17 @@ input:focus {
 
   <!-- PAGE 6 -->
   <section class="screen" id="page4">
-    <div class="eyebrow">Chapter 04 · From my heart</div>
+    <div class="eyebrow">Page 04 · From my heart</div>
 
     <div class="glass letter">
       <h2>So, here's the truth...</h2>
       <p>
         I made this little website because I wanted
-        to do something different — something you
-        could read at your own pace and remember.
+        to do something different. 
       </p>
       <p>
-        My name is Aki, and your name is Aki too.
-        Maybe that's another little detail that
-        makes our story feel uniquely ours.
+        My name is Kyle as Aki, your future husband, and your name is Ma. Lourdes as Aki too, my future wife. Sorry kung assuming ako WHAHAHAHAHAHA
+        
       </p>
       <p>
         But there's one question I still want to ask
@@ -694,7 +1145,7 @@ input:focus {
 
   <!-- PAGE 7: FLOWERS -->
   <section class="screen" id="flowers">
-    <div class="eyebrow">A little gift for you</div>
+    <div class="eyebrow">Page 05 • A little gift for you</div>
         <div class="photo-frame">
       <!-- Replace aki2.jpg with another photo of her -->
       <img src="aki2.jpg" alt="Another special memory"
@@ -702,23 +1153,19 @@ input:focus {
     </div>
 
     <div class="photo-note">A memory worth keeping 🌙</div>
-    <h1>These are for you. 🌸</h1>
+    <h1>This is for you. 🌸</h1>
 
     <div class="glass">
-      <div class="bouquet" aria-label="Bouquet of flowers">
-        💐
+      <div>
+      <img src="bouquet.png" class="bouquet">
       </div>
 
       <p>
-        If I could send this letter with a bouquet,
-        I would choose flowers that remind me of
-        something gentle, beautiful, and full of
-        possibility.
+        Pasensya na ganto lang nakayanan ko sa ngayon, of course babawi ako, so wait ka a hanggang sa umabot tayo dyan.
       </p>
 
       <p style="margin-top:15px">
-        So here's a virtual bouquet for you, Aki —
-        a small gift to accompany these words.
+        So here's a virtual bouquet for you, Aki.
       </p>
     </div>
 
@@ -732,14 +1179,14 @@ input:focus {
 
   <!-- PAGE 8: THE PROPOSAL -->
   <section class="screen" id="proposal">
-    <div class="eyebrow">The question I've been waiting to ask</div>
+    <div class="eyebrow">Page 06 • The question</div>
 
     <div class="glass">
       <span class="hero-icon">💗</span>
       <h1>Aki...</h1>
 
       <p>
-        I've shared what's in my heart, and now
+        I've shared what is in my heart, and now
         I want to ask you something important.
       </p>
 
@@ -748,20 +1195,33 @@ input:focus {
       </h2>
 
       <p>
-        I'd love the chance to know you more deeply,
-        show you my sincerity through my actions,
-        and see where this journey takes us —
-        at a pace that feels right for both of us.
+        Uuliton ko ang chinat ko sayo nang una kong sinabi sayo to.
       </p>
+      <p>
+        Ahmmm... Di ako perfect katulad ng iba dyan, but I will show you na kaya kong maging consistent and I'm here for you and don't forget na nandito ako para sayo sa lahat ng bagay.
+      </p>
+      <p>
+        Gusto kitang mas makilala pa and I’m willing to take things slowly and sincerely for you. Also I don't want to lose this opportunity habang wala ka pang ibang nagugustuhan. 
+        </p>
+
+      <p style="margin-top: 20px; font-size: 24px;">
+        So, Can I? Maria Lourdes?
+      </p>
+      
 
       <div class="nav">
         <button class="primary" onclick="answerYes()">
-          Yes, you may 💜
-        </button>
+  Yes, you may 💜
+</button>
+        <button onclick="sendYes()">YES 💜</button>
 
-        <button class="secondary" onclick="answerThink()">
-          Let me think 🌷
-        </button>
+<button class="secondary" onclick="answerThink()">
+  Let me think 🌷
+</button>
+
+<button class="secondary" onclick="answerNo()">
+  No, sorry 💌
+</button>
       </div>
 
       <div id="answer"></div>
@@ -772,7 +1232,7 @@ input:focus {
   <section class="screen" id="ending">
     <div class="glass">
       <span class="hero-icon">💐</span>
-      <div class="eyebrow">One last message</div>
+      <div class="eyebrow">Page 07 • One last message</div>
       <h1>Thank you, Aki.</h1>
 
       <p id="endingText">
@@ -801,7 +1261,7 @@ input:focus {
 <script>
 /*
   PERSONALIZE THESE SETTINGS:
-  Password: aki143
+  Password: purpleaki
   Photos: aki1.jpg and aki2.jpg
   Music: our-song.mp3
 
@@ -840,7 +1300,7 @@ function unlock() {
 
   if (entered !== SECRET_PASSWORD) {
     document.getElementById("hint").textContent =
-      "That's not the password. Try again, Aki 💜";
+      "Maliiii... kaya mo yan Aki. Try again, Aki 💜 Hangga't may hininga.., may ibubuga";
     return;
   }
 
@@ -850,7 +1310,7 @@ function unlock() {
 
   // Browsers generally allow music after a user taps a button.
   music.play().then(() => {
-    musicBtn.textContent = "♫ Music: ON";
+    musicBtn.textContent = "🎵Music: ️️Play";
   }).catch(() => {
     musicBtn.textContent = "♫ Tap for music";
   });
@@ -860,13 +1320,13 @@ async function toggleMusic() {
   if (music.paused) {
     try {
       await music.play();
-      musicBtn.textContent = "♫ Music: ON";
+      musicBtn.textContent = "🎵Music: ️️PLAY";
     } catch (error) {
       musicBtn.textContent = "♫ Music unavailable";
     }
   } else {
     music.pause();
-    musicBtn.textContent = "♫ Music: OFF";
+    musicBtn.textContent = "🎵Music: ️️PAUSE";
   }
 }
 
@@ -1117,7 +1577,220 @@ window.addEventListener("resize", () => {
   if (celebrationActive) resizeFireworks();
 });
 
-</script>
 
+/* ===== NO RESPONSE INTERACTION ===== */
+
+function answerNo() {
+  // Hide the proposal page.
+  document.getElementById("proposal")
+    .classList.remove("active");
+
+  // Display the respectful message.
+  document.getElementById("noCelebration")
+    .classList.add("show");
+
+  // Gentle falling flower effect.
+  const screen = document.getElementById("noCelebration");
+
+  for (let i = 0; i < 25; i++) {
+    setTimeout(() => {
+      if (!screen.classList.contains("show")) return;
+
+      const flower = document.createElement("span");
+
+      flower.className = "celebration-sparkle";
+      flower.textContent = ["🌸", "🌷", "✨", "💜"][
+        Math.floor(Math.random() * 4)
+      ];
+
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration =
+        (Math.random() * 4 + 4) + "s";
+
+      screen.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 8500);
+    }, i * 180);
+  }
+}
+
+function closeNoCelebration() {
+  document.getElementById("noCelebration")
+    .classList.remove("show");
+
+  showPage(8);
+}
+
+  
+/* ===== THINK RESPONSE ===== */
+
+function answerThink() {
+  document.getElementById("proposal")
+    .classList.remove("active");
+
+  document.getElementById("thinkCelebration")
+    .classList.add("show");
+
+  const screen = document.getElementById("thinkCelebration");
+
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      if (!screen.classList.contains("show")) return;
+
+      const flower = document.createElement("span");
+
+      flower.className = "celebration-sparkle";
+      flower.textContent = ["🌸", "🌷", "✨", "💜"][
+        Math.floor(Math.random() * 4)
+      ];
+
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration =
+        (Math.random() * 4 + 4) + "s";
+
+      screen.appendChild(flower);
+
+      setTimeout(() => flower.remove(), 8500);
+    }, i * 200);
+  }
+}
+
+function closeThinkCelebration() {
+  document.getElementById("thinkCelebration")
+    .classList.remove("show");
+
+  showPage(8);
+}
+
+  
+/* ===== GALLERY LETTERS ===== */
+
+const galleryLetters = [
+  {
+    title: "A Beautiful Soul 🌷",
+    message:
+      "Aki, there's something special about you that " +
+      "goes beyond what a picture can show. I appreciate " +
+      "the person you are, your personality, and the " +
+      "little things that make you uniquely yourself. " +
+      "You don't have to be perfect to be someone worth " +
+      "appreciating. Just being you is already meaningful."
+  },
+
+  {
+    title: "Your Smile ✨",
+    message:
+      "One thing I appreciate about you is your smile. " +
+      "There's something about seeing you happy that " +
+      "makes an ordinary moment feel a little brighter. " +
+      "I hope you always have reasons to smile, not just " +
+      "because of other people, but because you're happy " +
+      "with yourself and the life you're building."
+  },
+
+  {
+    title: "Your Uniqueness 💜",
+    message:
+      "There is only one Aki, and that's what makes you " +
+      "special. You have your own personality, thoughts, " +
+      "dreams, and little habits. I don't want to change " +
+      "who you are. I want to keep discovering the person " +
+      "behind every conversation and every memory."
+  },
+
+  {
+    title: "My Appreciation 🌸",
+    message:
+      "I want you to know that you deserve appreciation " +
+      "even on days when you don't feel your best. " +
+      "You don't need to accomplish something amazing " +
+      "to deserve kindness. I appreciate the little " +
+      "moments and the chance to know you more."
+  },
+
+  {
+    title: "Your Kindness 🦋",
+    message:
+      "Kindness is one of the qualities I admire in a " +
+      "person. I appreciate the thoughtful things you " +
+      "do, even the small ones that might seem ordinary " +
+      "to you. Sometimes the simplest gestures can " +
+      "mean more than you realize."
+  },
+
+  {
+    title: "Simply You 💗",
+    message:
+      "If there's one thing I want you to remember, " +
+      "it's that you don't have to pretend to be " +
+      "someone else around me. You can be yourself, " +
+      "share your thoughts, laugh, be quiet, and simply " +
+      "exist as you are. That's the person I want to " +
+      "continue getting to know."
+  }
+];
+
+function openLetter(index) {
+  const letter = galleryLetters[index];
+
+  if (!letter) return;
+
+  document.getElementById("galleryLetterTitle")
+    .textContent = letter.title;
+
+  document.getElementById("galleryLetterText")
+    .textContent = letter.message;
+
+  document.getElementById("galleryLetter")
+    .classList.add("show");
+}
+
+function closeLetter() {
+  document.getElementById("galleryLetter")
+    .classList.remove("show");
+}
+
+// Close the letter if the background is tapped.
+document.getElementById("galleryLetter")
+  .addEventListener("click", function(event) {
+    if (event.target === this) {
+      closeLetter();
+    }
+  });
+
+function sendYes() {
+
+    emailjs.send(
+        "service_7wdeo99",
+        "template_vcvbbh6",
+        {
+            message: "She chose YES! 💜",
+            response: "YES",
+            time: new Date().toLocaleString()
+        }
+    )
+    .then(function() {
+
+        alert("Response sent! 💜");
+
+        // Your celebration can happen here
+        celebrate();
+
+    })
+    .catch(function(error) {
+
+        console.log(error);
+        alert("Something went wrong. Please try again.");
+    });
+}
+
+  
+</script>
+<script>
+    emailjs.init({
+        publicKey: "KilyhwB_27rDM7h5k"
+    });
+
+</script>
 </body>
 </html>
